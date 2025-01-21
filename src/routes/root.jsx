@@ -1,14 +1,24 @@
-import { Form, NavLink, Outlet, useLoaderData } from "react-router-dom";
-import { getNotes, NOTES } from "../notes";
+import {
+  Form,
+  NavLink,
+  Outlet,
+  redirect,
+  useLoaderData,
+} from "react-router-dom";
+import { createNote, getNotes } from "../notes";
 
 export async function loader() {
   const notes = await getNotes();
   return { notes };
 }
 
+export async function action() {
+  const note = await createNote();
+  return redirect(`notes/${note.id}?edit=1`);
+}
+
 export default function Root() {
-  //   const { notes } = useLoaderData();
-  const notes = NOTES;
+  const { notes } = useLoaderData();
   return (
     <>
       <div id="sidebar">

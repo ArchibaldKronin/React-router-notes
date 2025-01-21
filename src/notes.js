@@ -8,15 +8,15 @@ import sortBy from "sort-by";
 export const NOTES = [
   {
     header: "Note 1",
-    discription: "About note 1",
+    description: "About note 1",
     createdAt: Date.now(),
-    id: "1",
+    id: 0,
   },
   {
     header: "Note 2",
-    discription: "About cats",
+    description: "About cats",
     createdAt: Date.now(),
-    id: "2",
+    id: 1,
   },
 ];
 
