@@ -7,7 +7,9 @@ import { loader as rootLoader, action as rootAction } from "./routes/root.jsx";
 import NoteWrapper, { loader as noteLoader } from "./routes/note-wrapper.jsx";
 import ErrorPage from "./components/error-page.jsx";
 import Index from "./routes/index.jsx";
-import { action as editAction } from "./components/edit-note-element.jsx";
+import { action as editAction } from "./routes/edit.js";
+import { action as deleteAction } from "./routes/delete.js";
+import { ThemeProvider } from "./context/theme-context.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
             path: "notes/:noteId/edit",
             action: editAction,
           },
+          {
+            path: "notes/:noteId/delete",
+            action: deleteAction,
+          },
         ],
       },
     ],
@@ -38,6 +44,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 );

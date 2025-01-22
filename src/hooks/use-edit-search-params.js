@@ -1,10 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 
-export default function useEditSearchParams() {
+export default function useIsEditSearchParams() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const isEdit = !!searchParams.get("edit");
-  function tuggleEdit(isEdit) {
+  function toggleEdit(isEdit) {
     if (isEdit) {
       setSearchParams({});
     } else {
@@ -12,5 +12,5 @@ export default function useEditSearchParams() {
     }
   }
 
-  return [isEdit, tuggleEdit];
+  return [isEdit, toggleEdit];
 }

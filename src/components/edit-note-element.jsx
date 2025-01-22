@@ -1,15 +1,11 @@
 import React from "react";
-import { Form, redirect } from "react-router-dom";
-import { updateNote } from "../notes";
+import { Form } from "react-router-dom";
 
-export async function action({ request, params }) {
-  const formData = await request.formData();
-  const updates = Object.fromEntries(formData);
-  await updateNote(params.noteId, updates);
-  return redirect(`/notes/${params.noteId}`);
-}
-
-const EditNote = React.memo(function EditNote({ editModeTuggle }) {
+const EditNote = React.memo(function EditNote({
+  editModeTuggle,
+  header,
+  description,
+}) {
   return (
     <>
       <button onClick={editModeTuggle}>Cancel</button>
@@ -22,7 +18,7 @@ const EditNote = React.memo(function EditNote({ editModeTuggle }) {
               placeholder="Your note"
               type="text"
               name="header"
-              defaultValue={""}
+              defaultValue={header}
             />
           </label>
           <label>
@@ -31,9 +27,10 @@ const EditNote = React.memo(function EditNote({ editModeTuggle }) {
               placeholder="Describe your note"
               name="description"
               rows={6}
-              defaultValue={""}
+              defaultValue={description}
             />
           </label>
+          <button type="submit">Save</button>
         </div>
       </Form>
     </>

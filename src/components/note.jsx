@@ -1,18 +1,26 @@
 import { Form } from "react-router-dom";
 import EditNote from "./edit-note-element";
-import useEditSearchParams from "../hooks/use-edit-search-params";
+import useIsEditSearchParams from "../hooks/use-edit-search-params";
+import { useCallback } from "react";
 
 export default function Note({ note }) {
-  const [isEdit, tuggleEdit] = useEditSearchParams();
+  const [isEdit, toggleEdit] = useIsEditSearchParams();
 
-  function handleOnClickEdit() {
-    tuggleEdit(isEdit);
-  }
+  const handleOnClickEdit = useCallback(
+    function handleOnClickEdit() {
+      toggleEdit(isEdit);
+    },
+    [isEdit, toggleEdit]
+  );
 
   return (
     <>
       {isEdit ? (
-        <EditNote editModeTuggle={handleOnClickEdit} />
+        <EditNote
+          editModeTuggle={handleOnClickEdit}
+          header={note.header}
+          description={note.description}
+        />
       ) : (
         <div id="note">
           <div>
@@ -23,7 +31,7 @@ export default function Note({ note }) {
             <button onClick={handleOnClickEdit}>Edit</button>
             <Form
               method="post"
-              action="destroy"
+              action="delete"
               onSubmit={(e) => {
                 if (!confirm("Вы точно хотите удалить эту заметку?")) {
                   e.preventDefault();
