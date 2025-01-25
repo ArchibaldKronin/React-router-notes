@@ -8,12 +8,19 @@ const EditNote = React.memo(function EditNote({
 }) {
   return (
     <>
-      <button onClick={editModeTuggle}>Cancel</button>
-      Edit Note
+      <div className="buttons-block">
+        <button type="submit" form="note-form">
+          Save
+        </button>
+        <button id="cancel" onClick={editModeTuggle}>
+          Cancel
+        </button>
+      </div>
       <Form method="post" id="note-form" action="edit">
         <div>
+          {" "}
           <label>
-            Header
+            <span>Header</span>
             <input
               placeholder="Your note"
               type="text"
@@ -21,8 +28,11 @@ const EditNote = React.memo(function EditNote({
               defaultValue={header}
             />
           </label>
+        </div>
+        <div>
+          {" "}
           <label>
-            Description
+            <span>Description</span>
             <textarea
               placeholder="Describe your note"
               name="description"
@@ -30,7 +40,6 @@ const EditNote = React.memo(function EditNote({
               defaultValue={description}
             />
           </label>
-          <button type="submit">Save</button>
         </div>
       </Form>
     </>

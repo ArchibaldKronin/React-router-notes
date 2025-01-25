@@ -1,12 +1,15 @@
 export default function Index() {
   return (
-    <>
-      <h1>Welcome to Your notes</h1>
-      <p>
-        <a href="https://github.com/ArchibaldKronin/React-router-notes.git">
-          Source code available here
-        </a>
-      </p>
-    </>
+    <div id="index">
+      <div>
+        <h1>Welcome to Your notes</h1>
+        <p>
+          Source code available{" "}
+          <a href="https://github.com/ArchibaldKronin/React-router-notes.git">
+            here
+          </a>
+        </p>
+      </div>
+    </div>
   );
 }
