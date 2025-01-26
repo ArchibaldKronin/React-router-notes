@@ -1,31 +1,13 @@
-//TO DO:
-// Переделать под Notes. Оставить только "получить все контакты", "изменить контакт", "создать", "удалить"
-
 import localforage from "localforage";
 import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
-
-export const NOTES = [
-  {
-    header: "Note 1",
-    description: "About note 1",
-    createdAt: Date.now(),
-    id: 0,
-  },
-  {
-    header: "Note 2",
-    description: "About cats",
-    createdAt: Date.now(),
-    id: 1,
-  },
-];
 
 export async function getNotes(query) {
   await fakeNetwork(`getNotes:${query}`);
   let notes = await localforage.getItem("notes");
   if (!notes) notes = [];
   if (query) {
-    notes = matchSorter(notes, query, { keys: ["header", "discription"] });
+    notes = matchSorter(notes, query, { keys: ["header", "description"] });
   }
   return notes.sort(sortBy("header", "createdAt"));
 }

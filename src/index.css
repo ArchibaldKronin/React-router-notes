@@ -1,3 +1,13 @@
+:root {
+  --primary: #3b82f6;
+  --background: #f9fafb;
+  --header-text: #111827;
+  --body-text: #374151;
+  --highlight: #ff9381;
+  --borders: #d1d5db;
+  --sidebar-bg: #e5e7eb;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -21,7 +31,8 @@ html,
 body {
   height: 100%;
   line-height: 1.5;
-  color: #121212;
+  background-color: var(--background);
+  color: var(--body-text);
 }
 
 textarea,
@@ -37,8 +48,12 @@ button {
   line-height: 1.5;
 }
 
+h1 {
+  color: var(--header-text);
+}
+
 button {
-  color: green;
+  color: var(--primary);
   font-weight: 500;
 }
 
@@ -58,9 +73,9 @@ button:active {
   flex-direction: row;
   padding-bottom: 1rem;
   padding-left: 1rem;
-  background-color: goldenrod;
+  margin-bottom: 1rem;
   gap: 1rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--borders);
 }
 
 .buttons-block button {
@@ -84,11 +99,10 @@ form[action$="delete"] button {
   align-items: center;
   min-height: max-content;
   width: 100%;
-  background-color: red;
   padding-left: 5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--borders);
 }
 
 #root .header h1 {
@@ -106,7 +120,7 @@ form[action$="delete"] button {
   top: 1px;
   width: 25px;
   height: 25px;
-  background-image: url("../public/notes-notepad-svgrepo-com.svg"); /* Путь к SVG */
+  background-image: url("../public/notes-notepad-svgrepo-com.svg");
   background-size: contain;
   background-repeat: no-repeat;
   margin-right: 0.5rem;
@@ -118,7 +132,6 @@ form[action$="delete"] button {
   justify-content: flex-end;
   align-items: center;
   padding-right: 5rem;
-  background-color: green;
 }
 
 #root .header + div {
@@ -130,8 +143,8 @@ form[action$="delete"] button {
 
 #sidebar {
   width: 25rem;
-  background-color: yellow;
-  border-right: solid 1px blue;
+  background-color: var(--sidebar-bg);
+  border-right: solid 1px var(--borders);
   display: flex;
   flex-direction: column;
 }
@@ -148,7 +161,7 @@ form[action$="delete"] button {
   gap: 0.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--borders);
 }
 
 #sidebar > div form {
@@ -232,23 +245,23 @@ i {
 }
 
 #sidebar nav a:hover {
-  background-color: aquamarine;
+  background-color: var(--borders);
 }
 
 #sidebar nav a.active {
-  background-color: rgba(255, 122, 99, 0.774);
+  background-color: var(--highlight);
   color: white;
 }
 
 #sidebar nav a.pending {
-  color: rgba(255, 122, 99, 0.774);
+  color: var(--highlight);
 }
 
 #detail {
   flex: 1;
   width: calc(100% - 25rem);
   padding: 1rem 3rem;
-  background-color: pink;
+  background-color: #ffffff;
 }
 
 #loading-spinner {
@@ -262,7 +275,6 @@ i {
 }
 
 #note {
-  background-color: lightblue;
   max-width: 45rem;
   display: flex;
   flex-direction: column;
@@ -276,7 +288,7 @@ i {
   padding-bottom: 0.5rem;
   overflow-wrap: break-word;
   line-height: 1.2;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--borders);
 }
 
 #note h1 ~ p {
@@ -285,12 +297,11 @@ i {
 }
 
 #cancel {
-  color: black;
+  color: var(--black);
 }
 
 #note-form {
   max-width: 45rem;
-  background-color: lightgreen;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -300,19 +311,16 @@ i {
 #note-form > div {
   display: flex;
   flex-direction: row;
-  background-color: lightskyblue;
 }
 
 #note-form > div label {
   display: flex;
   gap: 1rem;
-  background-color: yellowgreen;
   width: 100%;
 }
 
 #note-form > div span {
   width: 6rem;
-  background-color: aliceblue;
 }
 
 #note-form input,
@@ -334,7 +342,7 @@ i {
 }
 
 #index a:hover {
-  color: green;
+  color: var(--highlight);
 }
 
 #error-page {
@@ -343,24 +351,24 @@ i {
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #f44250;
+  background-color: var(--highlight);
 }
 
 #footer {
-  background-color: aqua;
+  background-color: #ffffff;
   padding-left: 3rem;
 }
 
 #footer > div {
-  background-color: green;
   width: fit-content;
   height: 25px;
 }
 
 #footer a {
   color: inherit;
+  text-decoration: none;
 }
 
 #footer a:hover {
-  color: green;
+  color: var(--highlight);
 }
