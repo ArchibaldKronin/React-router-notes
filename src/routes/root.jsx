@@ -47,7 +47,6 @@ export default function Root() {
   }
 
   function getIsToShowFooter() {
-    console.log(location);
     if (location.pathname === "/") return true;
     return false;
   }

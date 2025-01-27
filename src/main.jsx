@@ -1,7 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import Root from "./routes/root.jsx";
 import { loader as rootLoader, action as rootAction } from "./routes/root.jsx";
 import NoteWrapper, { loader as noteLoader } from "./routes/note-wrapper.jsx";
@@ -22,6 +26,10 @@ const router = createBrowserRouter([
       {
         errorElement: <ErrorPage />,
         children: [
+          {
+            path: "notes",
+            element: <Navigate to={"/"} replace />,
+          },
           { index: true, element: <Index /> },
           {
             path: "notes/:noteId",
