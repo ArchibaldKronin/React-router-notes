@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { THEME, ThemeContext } from "../context/theme-context";
+import { NavLink } from "react-router-dom";
 
 export default function Header({ children }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -14,7 +15,9 @@ export default function Header({ children }) {
   return (
     <>
       <div className={"header"}>
-        <h1>{children}</h1>
+        <NavLink to={"/"}>
+          <h1>{children}</h1>
+        </NavLink>
         <div>
           <button onClick={() => toggleTheme()}>
             {theme === THEME.light ? "Make dark" : "Make light"}
